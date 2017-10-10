@@ -90,13 +90,13 @@ var styles = exports.styles = {
 var babelPluginFlowReactPropTypes_proptype_Props = {
   classes: require('prop-types').object,
   className: require('prop-types').string,
-  defaultValue: require('prop-types').string,
+  defaultValue: require('prop-types').oneOfType([require('prop-types').string, require('prop-types').number]),
   disabled: require('prop-types').bool,
   onChange: require('prop-types').func,
   rows: require('prop-types').oneOfType([require('prop-types').string, require('prop-types').number]),
   rowsMax: require('prop-types').oneOfType([require('prop-types').string, require('prop-types').number]),
   textareaRef: require('prop-types').func,
-  value: require('prop-types').string
+  value: require('prop-types').oneOfType([require('prop-types').string, require('prop-types').number])
 };
 
 /**
@@ -179,7 +179,7 @@ var Textarea = function (_React$Component) {
       if (this.shadow && this.singlelineShadow) {
         // The component is controlled, we need to update the shallow value.
         if (typeof this.props.value !== 'undefined') {
-          this.shadow.value = props.value || '';
+          this.shadow.value = props.value == null ? '' : String(props.value);
         }
 
         var lineHeight = this.singlelineShadow.scrollHeight;

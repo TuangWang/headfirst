@@ -4,7 +4,7 @@
  * @Email:  wangxiaofeng@hualala.com
  * @Filename: webpack.dev.config.js
  * @Last modified by:   xf
- * @Last modified time: 2017-09-28T15:43:02+08:00
+ * @Last modified time: 2017-10-10T10:47:54+08:00
  * @Copyright: Copyright(c) 2017-present Hualala Co.,Ltd.
  */
 
@@ -15,10 +15,11 @@ const webpack = require('webpack')
 
 module.exports = function(env, argv) {
   return {
-    entry: './core/apps/admin/index.jsx',
+    entry: './core/apps/admin/index.js',
     output: {
       filename: "[name].bundle.js",
       path: path.resolve(__dirname, 'core/apps/admin/assets/'),
+      publicPath: 'http://localhost:8082/',
     },
     devServer: {
       contentBase: "./core/apps/admin/assets/",
@@ -27,9 +28,12 @@ module.exports = function(env, argv) {
     resolve: {
       extensions: ['.js', '.jsx']
     },
+    plugins: [
+      // new webpack.HotModuleReplacementPlugin(),
+    ],
     module: {
       loaders: [{
-          test: /.jsx?$/,
+          test: /\.(js|jsx)$/,
           loader: 'babel-loader',
           exclude: /node_modules/
         },
@@ -39,7 +43,31 @@ module.exports = function(env, argv) {
         }
       ]
     },
-    devtool: env.production ? 'source-maps': 'eval',
+    devServer: {
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        },
+        stats: {
+            version: false,
+            hash: false,
+            maxModules: 0
+        },
+        compress: false,
+        clientLogLevel: "none",
+        port: 8082,
+        // hot: true,
+        // hotOnly: true,
+        host: "localhost",
+        overlay: {
+            warnings: true,
+            errors: true
+        },
+    },
+    devtool: 'cheap-source-map',
+    // devServer: {
+    //   inline: true
+    // }
+    // devtool: env.production ? 'source-maps': 'eval',
     // plugins: [
     //   new webpack.optimize.UglifyJsPlugin({
     //     compress: argv["optimize-minimize"] // only if -p or --optimize-minimize were passed

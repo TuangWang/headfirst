@@ -4,7 +4,7 @@
  * @Email:  wangxiaofeng@hualala.com
  * @Filename: Drawer.jsx
  * @Last modified by:   xf
- * @Last modified time: 2017-09-28T16:35:02+08:00
+ * @Last modified time: 2017-10-10T10:50:42+08:00
  * @Copyright: Copyright(c) 2017-present Hualala Co.,Ltd.
  */
 
@@ -30,7 +30,7 @@
  const styles = theme => ({
    root: {
      width: '100%',
-     height: 430,
+     height: '100%',
     //  marginTop: theme.spacing.unit * 3,
      zIndex: 1,
      overflow: 'hidden',

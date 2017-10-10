@@ -4,7 +4,7 @@
  * @Email:  wangxiaofeng@hualala.com
  * @Filename: index.jsx
  * @Last modified by:   xf
- * @Last modified time: 2017-09-28T16:29:30+08:00
+ * @Last modified time: 2017-09-29T09:52:49+08:00
  * @Copyright: Copyright(c) 2017-present Hualala Co.,Ltd.
  */
 
@@ -18,7 +18,7 @@
 
    render(){
      return (
-       <div>Home</div>
+       <div>Config</div>
      )
    }
  }
